@@ -42,59 +42,68 @@ Part 1: Discussion
 # Parts 2 through 5:
 # Create your classes and class methods
 
-class Vegetable(object):
-    """A class for vegetables"""
-    def __init__(self, name, color, flavor):
-        self.name = name
-        self.color = color
-        self.flavor = flavor
+class Student(object):
+  """ Class to store student data"""
+  def __init__(self, first_name, last_name, address)
+    self.first_name = first_name
+    self.last_name = last_name
+    self.address = address
 
-    def description(self):
-        print "This is a %s %s that tastes %s." % (self.color, self.name, self.flavor)
+  def __repr__(self):
+    return "%s %s lives at %s" % (self.first_name, self.last_name, self.address)
+
+class Question(object):
+  """Class for storing question and answers"""
+  def __init__(self, question, answer):
+    self.question = question
+    self.answer = answer
+
+  def __repr__(self):
+      """ Returns question and answer)."""
+
+      return "Question: {} \n Answer: {}".format(self.question,
+          self.answer)
+
+  def ask_and_evaluate(self):
+      """ Prints question, prompts user for answer, then True if correct or False."""
+
+      print self.question
+      user_answer = raw_input("> ")
+      if user_answer == self.answer:
+          return True
+      else:
+          return False
+
+class Exam(object):
+  """Class for exam questions"""
+  def __init__(self, name, question):
+    self.name = name
+    self.question = []
+
+  def __repr__(self):
+    return "This is the {} Exam, followed by the question: \n{}".format(self.name, self.question)
+
+  def add_question(self, questions, correct_answer):
+    """Adds question and correct answer to create another question"""
+    self.question.append(Question(question, correct_answer))
+
+  def administer(self):
+      """Ask questions and return score of how many were correct"""
+
+      for question in self.question:
+          if question.ask_and_evaluate():
+              correct_answer += 1
+      # return correct answer divided by total number of questions * 100 to get score
+      score = (correct_answer / len(self.question)) * 100
+      return score
+
+class StudentExam(object):
 
 
-cucumber = Vegetable("cucumber", "green", "crunchy")
 
-cucumber.description()
 
-class Wintermelon(Vegetable):
-    """A vegetable available seasonally"""
 
-    def __init__(self, name, color, flavor):
-        super(Vegetable, self).__init__(self, "wintermelon", "white", "crunchy")
 
-class Movies(object):
-    """Class describing movie titles, genre, and era"""
-    def __init__(self, name, genre, era):
-        self.name = name
-        self.genre = genre
-        self.era = era
 
-    def watched(self):
-        """Record whether the movie has been watched."""
-        self.watched = True
-
-PowerRangers = Movies("PowerRangers", "action", "current")
-PowerRangers.watched()
-
-class Animal(object):
-    """A class of animals"""
-    def __init__(self, name, species):
-        self.name = name
-        self.species = species
-
-    def description(self):
-        print "This is a %s named %s." % (self.name, self.species)
-
-class Duck(Animal):
-    """subclass of animal"""
-    sound = 'quack'
-
-    def __init__(self, name):
-        self.name = name
-        self.species = "duck"
-
-    def make_sound(self):
-        return "The %s goes %s" % (self.species, sound)
 
 

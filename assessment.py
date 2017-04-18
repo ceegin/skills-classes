@@ -41,7 +41,6 @@ Part 1: Discussion
 """
 # Parts 2 through 5:
 # Create your classes and class methods
-
 class Student(object):
   """ Class to store student data"""
   def __init__(self, first_name, last_name, address):
@@ -61,11 +60,10 @@ class Question(object):
   def __repr__(self):
       """ Returns question and answer)."""
 
-      return "Question: {} \n Answer: {}".format(self.question,
-          self.answer)
+      return "Question: {} \n Answer: {}".format(self.question, self.answer)
 
   def ask_and_evaluate(self):
-      """ Prints question, prompts user for answer, then True if correct or False."""
+      """ Prints question, prompts user for answer, then True or False."""
 
       print self.question
       user_answer = raw_input("> ")
@@ -97,7 +95,28 @@ class Exam(object):
       score = (correct_answer / len(self.question)) * 100
       return score
 
+class StudentExam(object):
+  """Stores student score on exam"""
+  def __init__(self, student, exam):
+    self.student = student
+    self.exam = exam
+    self.score = score
+
+  def __repr__(self):
+    return "{} completed {} with a score {}".format(self.student, self.exam, self.score)
+
+  def take_test(self):
+      """Store score from administering the test"""
+
+      self.score = self.exam.administer()
+      print "{} scored {}".format(self.student, self.score)
 
 
-
-
+def quiz_example():
+  quiz = Quiz('Quiz')
+  quiz.add_question("What is your Balloonicorn's favorite color?", "red")
+  quiz.add_question("What is Hackbright's mascot?", "balloonicorn")
+  quiz.add_question("What is Hackbright teaching?", "python")
+  student_info = Student("Christina", "Gin", "683 Sutter St.")
+  quiz = StudentExam(student_info, quiz)
+  quiz.take_test()

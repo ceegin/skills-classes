@@ -44,7 +44,7 @@ Part 1: Discussion
 
 class Student(object):
   """ Class to store student data"""
-  def __init__(self, first_name, last_name, address)
+  def __init__(self, first_name, last_name, address):
     self.first_name = first_name
     self.last_name = last_name
     self.address = address
@@ -96,12 +96,6 @@ class Exam(object):
       # return correct answer divided by total number of questions * 100 to get score
       score = (correct_answer / len(self.question)) * 100
       return score
-
-class StudentExam(object):
-
-
-
-
 
 
 
